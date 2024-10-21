@@ -1,0 +1,6 @@
+trackConfig:
+  repoURL: https://github.com/username/reponame
+  path: /target.yaml
+  branch: main
+  webhookSecret: secretwebhook
+  token: github_pat_gidatvcjA0TcqVj0OhHPAX_APdlzMgdasdyubbkjadhefuzWRsTQANNMT7WSSRMfKhYewS

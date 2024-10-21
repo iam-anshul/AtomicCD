@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kubecd-cm
+data:
+  trackConfig.yaml: |
+    trackConfig:
+      repoURL: https://github.com/username/repo
+      path: /targetConfig.yaml
+      branch: dev
+      token: your github personal access token
+      webhookSecret: your secret webhook

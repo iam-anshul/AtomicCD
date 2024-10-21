@@ -1,0 +1,29 @@
+targetConfig:
+  - targetName: ex1
+    containers:
+    - containerName: "cd-deploy"
+      containerImage: "python"
+      containerTag: "3.11.2"
+    namespace: default
+    type: statefulset
+    scope: nameScoped
+    name: cd-deploy
+  - targetName: ex2
+    containers:
+    - containerName: "nginx"
+      containerImage: "nginx"
+      containerTag: "latest"
+    - containerName: "python"
+      containerImage: "python"
+      containerTag: "3.9"
+    namespace: default
+    type: deployment
+    scope: nameScoped
+    name: nginx
+  - targetName: ex3
+    containers:
+    - containerName: "python"
+      containerImage: "python"
+      containerTag: "latest"
+    namespace: default
+    scope: namespaceScoped

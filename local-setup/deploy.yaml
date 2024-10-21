@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: atomiccd
+spec:
+  selector:
+    matchLabels:
+      app: atomiccd
+  template:
+    metadata:
+      labels:
+        app: atomiccd
+    spec:
+      serviceAccountName: pod-lister
+      containers:
+      - name: kubecd
+        image: iamanshul14/atomiccd:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - name: config-vol
+          mountPath: /kubeCD/config
+        resources:
+          limits:
+            memory: "50Mi"
+            cpu: "30m"
+        ports:
+        - containerPort: 8080
+      volumes:
+      - name: config-vol
+        configMap:
+          name: kubecd-cm
