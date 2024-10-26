@@ -9,7 +9,7 @@ import (
 func GetTrackConfig() *map[string]interface{} {
 	TrackConfig := viper.New()
 
-	TrackConfig.SetConfigFile("/atomicCD/config/trackConfig.yaml")
+	TrackConfig.SetConfigFile("/AtomicCD/config/trackConfig.yaml")
 	if err := TrackConfig.ReadInConfig(); err != nil {
 		log.Fatalf("Error reading TrackConfig.yaml file: %v", err)
 	}

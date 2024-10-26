@@ -1,4 +1,4 @@
-module github.com/iam-anshul/atomicCD
+module github.com/iam-anshul/AtomicCD
 
 go 1.23
 

@@ -3,5 +3,5 @@ kind: Cluster
 nodes:
   - role: control-plane
     extraMounts:
-      - hostPath: /c/Users/anshu/OneDrive/Desktop/atomicCD
+      - hostPath: /c/Users/anshu/OneDrive/Desktop/AtomicCD
         containerPath: /mnt

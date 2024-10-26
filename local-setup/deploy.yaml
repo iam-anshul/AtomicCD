@@ -1,20 +1,20 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: atomiccd
+  name: AtomicCD
 spec:
   selector:
     matchLabels:
-      app: atomiccd
+      app: AtomicCD
   template:
     metadata:
       labels:
-        app: atomiccd
+        app: AtomicCD
     spec:
       serviceAccountName: pod-lister
       containers:
       - name: kubecd
-        image: iamanshul14/atomiccd:latest
+        image: iamanshul14/AtomicCD:latest
         imagePullPolicy: Always
         volumeMounts:
         - name: config-vol

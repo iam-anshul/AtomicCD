@@ -11,7 +11,7 @@ RUN go build -o main .
 
 FROM alpine:latest
 
-WORKDIR /atomicCD
+WORKDIR /AtomicCD
 
 COPY --from=builder /app/main .
 
