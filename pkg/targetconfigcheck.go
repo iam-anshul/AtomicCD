@@ -10,11 +10,25 @@ func checkContainerConfig(containerConfig *[]map[string]interface{}, scope strin
 		if container["containername"] == nil && scope == "namescoped" {
 			log.Fatalf("'containerName' field not specified, incorrect configuration of target with targetName: %v", container["targetName"])
 		}
+
+		if container["containername"].(string) == "" && scope == "namescoped" {
+			log.Fatalf("'containerName' field empty, incorrect configuration of target with targetName: %s", container["targetName"])
+		}
+
 		if container["containerimage"] == nil {
 			log.Fatalf("'containerImage' field not specified, incorrect configuration of target with targetName: %v", container["targetName"])
 		}
+
+		if container["containerimage"].(string) == "" {
+			log.Fatalf("'containerImage' field empty, incorrect configuration of target with targetName: %s", container["targetName"])
+		}
+
 		if container["containertag"] == nil {
 			log.Fatalf("'containerTag' field not specified, incorrect configuration of target with targetName: %v", container["targetName"])
+		}
+
+		if container["containertag"].(string) == "" {
+			log.Fatalf("'containerTag' field empty, incorrect configuration of target with targetName: %s", container["targetName"])
 		}
 
 		if scope == "nameScoped" {
