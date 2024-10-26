@@ -4,10 +4,10 @@ import (
 	"log"
 )
 
-func checkContainerConfig(containerConfig *[]map[string]interface{}) {
+func checkContainerConfig(containerConfig *[]map[string]interface{}, scope string) {
 	for _, container := range *containerConfig {
 
-		if container["containername"] == nil {
+		if container["containername"] == nil && scope == "namescoped" {
 			log.Fatalf("'containerName' field not specified, incorrect configuration of target with targetName: %v", container["targetName"])
 		}
 		if container["containerimage"] == nil {
@@ -17,11 +17,23 @@ func checkContainerConfig(containerConfig *[]map[string]interface{}) {
 			log.Fatalf("'containerTag' field not specified, incorrect configuration of target with targetName: %v", container["targetName"])
 		}
 
-		for key, _ := range container {
-			if key != "containername" && key != "containerimage" && key != "containertag" && key != "targetName" {
-				log.Fatalf("unknown field '%v', incorrect configuration of target with targetName: %v", key, container["targetName"])
+		if scope == "nameScoped" {
+
+			for key, _ := range container {
+				if key != "containername" && key != "containerimage" && key != "containertag" && key != "targetName" {
+					log.Fatalf("unknown field '%v', incorrect configuration of target with targetName: %v", key, container["targetName"])
+				}
+			}
+
+		} else {
+
+			for key, _ := range container {
+				if key != "containerimage" && key != "containertag" && key != "targetName" {
+					log.Fatalf("unknown field '%v', incorrect configuration of target with targetName: %v", key, container["targetName"])
+				}
 			}
 		}
+
 	}
 }
 

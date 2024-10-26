@@ -121,6 +121,8 @@ func getContainers(i int) *[]map[string]interface{} {
 		log.Fatalf("There is no 'containers' field in targetName: %v", (*targetConfig)[i]["targetname"])
 	}
 
+	scope := (*targetConfig)[i]["scope"]
+
 	containerConfigList := make([]map[string]interface{}, 0)
 	var targetName string = (*targetConfig)[i]["targetname"].(string)
 
@@ -130,7 +132,7 @@ func getContainers(i int) *[]map[string]interface{} {
 		containerConfig["targetName"] = targetName
 		containerConfigList = append(containerConfigList, containerConfig)
 	}
-	checkContainerConfig(&containerConfigList)
+	checkContainerConfig(&containerConfigList, scope.(string))
 	return &containerConfigList
 }
 
